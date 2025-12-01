@@ -22,31 +22,41 @@ Partial Class Form1
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        CheckBox1 = New CheckBox()
+        components = New ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
+        PictureBox1 = New PictureBox()
+        Timer1 = New Timer(components)
+        CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
-        ' CheckBox1
+        ' PictureBox1
         ' 
-        CheckBox1.AutoSize = True
-        CheckBox1.Location = New Point(214, 189)
-        CheckBox1.Name = "CheckBox1"
-        CheckBox1.Size = New Size(85, 19)
-        CheckBox1.TabIndex = 0
-        CheckBox1.Text = "CheckBox1"
-        CheckBox1.UseVisualStyleBackColor = True
+        PictureBox1.Location = New Point(66, 240)
+        PictureBox1.Name = "PictureBox1"
+        PictureBox1.Size = New Size(64, 64)
+        PictureBox1.TabIndex = 0
+        PictureBox1.TabStop = False
+        ' 
+        ' Timer1
+        ' 
+        Timer1.Interval = 1000
         ' 
         ' Form1
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(800, 450)
-        Controls.Add(CheckBox1)
+        BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), Image)
+        BackgroundImageLayout = ImageLayout.Center
+        ClientSize = New Size(378, 630)
+        Controls.Add(PictureBox1)
+        DoubleBuffered = True
         Name = "Form1"
-        Text = "Form1"
+        Text = "Slot Machine"
+        CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
-        PerformLayout()
     End Sub
 
-    Friend WithEvents CheckBox1 As CheckBox
+    Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents Timer1 As Timer
 
 End Class
