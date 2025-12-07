@@ -17,15 +17,11 @@
     Dim goals = New Integer()
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        spriteSheet = New Bitmap(New Bitmap("C:\Users\daniel\Coding\School\FT1.7\f1.7\Assets\symbols.png"))
+        spriteSheet = New Bitmap(New Bitmap(My.Resources.Resource1.symbols))
         PictureBox1.Image = Get_Frame(currFrame1)
         PictureBox2.Image = Get_Frame(currFrame2)
         PictureBox3.Image = Get_Frame(currFrame3)
         Debug.WriteLine("Im Loaded")
-    End Sub
-
-    Private Sub PB_Click(sender As Object, e As EventArgs) Handles PictureBox1.Click
-
     End Sub
 
     Private Function Get_Frame(currFrame As Integer) As Bitmap

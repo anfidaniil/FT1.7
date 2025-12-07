@@ -23,7 +23,6 @@ Partial Class Form1
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         components = New ComponentModel.Container()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
         PictureBox1 = New PictureBox()
         Timer1 = New Timer(components)
         PictureBox2 = New PictureBox()
@@ -99,7 +98,7 @@ Partial Class Form1
         ' 
         AutoScaleDimensions = New SizeF(7.0F, 15.0F)
         AutoScaleMode = AutoScaleMode.Font
-        BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), Image)
+        BackgroundImage = My.Resources.Resource1.slot_machine
         BackgroundImageLayout = ImageLayout.Center
         ClientSize = New Size(378, 630)
         Controls.Add(BalanceLabel)
