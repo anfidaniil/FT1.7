@@ -4,27 +4,28 @@
     Dim frameHeight As Integer = 64
     Dim totalFrames = 10
 
-    Dim currFrame1 = 0
-    Dim currFrame2 = 0
-    Dim currFrame3 = 0
+    Dim currBalance = 5000
+
+    Dim currFrame1 = 8
+    Dim currFrame2 = 8
+    Dim currFrame3 = 8
 
     Dim Timer1_delta = 0
     Dim Timer2_delta = 0
     Dim Timer3_delta = 0
 
+    Dim goals = New Integer()
+
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         spriteSheet = New Bitmap(New Bitmap("C:\Users\daniel\Coding\School\FT1.7\f1.7\Assets\symbols.png"))
-
+        PictureBox1.Image = Get_Frame(currFrame1)
+        PictureBox2.Image = Get_Frame(currFrame2)
+        PictureBox3.Image = Get_Frame(currFrame3)
         Debug.WriteLine("Im Loaded")
     End Sub
 
     Private Sub PB_Click(sender As Object, e As EventArgs) Handles PictureBox1.Click
 
-    End Sub
-
-    Private Sub Change_Picture()
-        Dim goals = Utils.get_RandomNumbers()
-        Scroll_Frames()
     End Sub
 
     Private Function Get_Frame(currFrame As Integer) As Bitmap
@@ -49,11 +50,14 @@
     End Sub
 
     Private Sub PlayButton_Click(sender As Object, e As EventArgs) Handles PlayButton.Click
-        Dim goals = Utils.get_RandomNumbers()
+        If currBalance <= 0 Then
+            Me.Close()
+        End If
+        goals = Utils.get_RandomNumbers()
         currFrame1 = goals(0)
         currFrame2 = goals(1)
         currFrame3 = goals(2)
-        Change_Picture()
+        Scroll_Frames()
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
@@ -95,6 +99,13 @@
         Else
             Timer3.Stop()
             Timer3_delta = 0
+            OnAnimationEnd()
         End If
+    End Sub
+
+    Private Sub OnAnimationEnd()
+        Dim balanceChange = Utils.calc_Win(goals)
+        currBalance += balanceChange
+        BalanceLabel.Text = "Balance: " & currBalance
     End Sub
 End Class

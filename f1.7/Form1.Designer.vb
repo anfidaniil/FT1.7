@@ -31,6 +31,7 @@ Partial Class Form1
         PlayButton = New Button()
         Timer2 = New Timer(components)
         Timer3 = New Timer(components)
+        BalanceLabel = New Label()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         CType(PictureBox2, ComponentModel.ISupportInitialize).BeginInit()
         CType(PictureBox3, ComponentModel.ISupportInitialize).BeginInit()
@@ -83,6 +84,17 @@ Partial Class Form1
         ' 
         Timer3.Interval = 25
         ' 
+        ' BalanceLabel
+        ' 
+        BalanceLabel.BackColor = Color.Transparent
+        BalanceLabel.Font = New Font("Segoe UI", 12.0F)
+        BalanceLabel.Location = New Point(70, 107)
+        BalanceLabel.Name = "BalanceLabel"
+        BalanceLabel.Size = New Size(198, 73)
+        BalanceLabel.TabIndex = 4
+        BalanceLabel.Text = "Balance: 5000"
+        BalanceLabel.TextAlign = ContentAlignment.MiddleCenter
+        ' 
         ' Form1
         ' 
         AutoScaleDimensions = New SizeF(7.0F, 15.0F)
@@ -90,6 +102,7 @@ Partial Class Form1
         BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), Image)
         BackgroundImageLayout = ImageLayout.Center
         ClientSize = New Size(378, 630)
+        Controls.Add(BalanceLabel)
         Controls.Add(PlayButton)
         Controls.Add(PictureBox3)
         Controls.Add(PictureBox2)
@@ -110,5 +123,6 @@ Partial Class Form1
     Friend WithEvents PlayButton As Button
     Friend WithEvents Timer2 As Timer
     Friend WithEvents Timer3 As Timer
+    Friend WithEvents BalanceLabel As Label
 
 End Class
