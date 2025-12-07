@@ -24,6 +24,7 @@
     End Sub
 
     Private Sub Form1_Close() Handles Me.Closed
+        'FIX THIS PART- does the oposite
         Dim res = MsgBox("Are you sure?", vbYesNo, "Leave")
         If res = vbYes Then
             Me.Close()
