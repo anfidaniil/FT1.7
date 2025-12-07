@@ -26,7 +26,14 @@ Partial Class Form1
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
         PictureBox1 = New PictureBox()
         Timer1 = New Timer(components)
+        PictureBox2 = New PictureBox()
+        PictureBox3 = New PictureBox()
+        PlayButton = New Button()
+        Timer2 = New Timer(components)
+        Timer3 = New Timer(components)
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
+        CType(PictureBox2, ComponentModel.ISupportInitialize).BeginInit()
+        CType(PictureBox3, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' PictureBox1
@@ -39,24 +46,69 @@ Partial Class Form1
         ' 
         ' Timer1
         ' 
-        Timer1.Interval = 1000
+        Timer1.Interval = 25
+        ' 
+        ' PictureBox2
+        ' 
+        PictureBox2.Location = New Point(144, 240)
+        PictureBox2.Name = "PictureBox2"
+        PictureBox2.Size = New Size(64, 64)
+        PictureBox2.TabIndex = 1
+        PictureBox2.TabStop = False
+        ' 
+        ' PictureBox3
+        ' 
+        PictureBox3.Location = New Point(222, 240)
+        PictureBox3.Name = "PictureBox3"
+        PictureBox3.Size = New Size(64, 64)
+        PictureBox3.TabIndex = 2
+        PictureBox3.TabStop = False
+        ' 
+        ' PlayButton
+        ' 
+        PlayButton.BackColor = Color.Red
+        PlayButton.ForeColor = Color.Transparent
+        PlayButton.Location = New Point(329, 231)
+        PlayButton.Name = "PlayButton"
+        PlayButton.Size = New Size(27, 45)
+        PlayButton.TabIndex = 3
+        PlayButton.TextImageRelation = TextImageRelation.ImageAboveText
+        PlayButton.UseVisualStyleBackColor = False
+        ' 
+        ' Timer2
+        ' 
+        Timer2.Interval = 25
+        ' 
+        ' Timer3
+        ' 
+        Timer3.Interval = 25
         ' 
         ' Form1
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
+        AutoScaleDimensions = New SizeF(7.0F, 15.0F)
         AutoScaleMode = AutoScaleMode.Font
         BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), Image)
         BackgroundImageLayout = ImageLayout.Center
         ClientSize = New Size(378, 630)
+        Controls.Add(PlayButton)
+        Controls.Add(PictureBox3)
+        Controls.Add(PictureBox2)
         Controls.Add(PictureBox1)
         DoubleBuffered = True
         Name = "Form1"
         Text = "Slot Machine"
         CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
+        CType(PictureBox2, ComponentModel.ISupportInitialize).EndInit()
+        CType(PictureBox3, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
     End Sub
 
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents Timer1 As Timer
+    Friend WithEvents PictureBox2 As PictureBox
+    Friend WithEvents PictureBox3 As PictureBox
+    Friend WithEvents PlayButton As Button
+    Friend WithEvents Timer2 As Timer
+    Friend WithEvents Timer3 As Timer
 
 End Class
