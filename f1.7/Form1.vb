@@ -21,7 +21,14 @@
         PictureBox1.Image = Get_Frame(currFrame1)
         PictureBox2.Image = Get_Frame(currFrame2)
         PictureBox3.Image = Get_Frame(currFrame3)
-        Debug.WriteLine("Im Loaded")
+    End Sub
+
+    Private Sub Form1_Close() Handles Me.Closed
+        Dim res = MsgBox("Are you sure?", vbYesNo, "Leave")
+        If res = vbYes Then
+            Me.Close()
+
+        End If
     End Sub
 
     Private Function Get_Frame(currFrame As Integer) As Bitmap
@@ -103,5 +110,25 @@
         Dim balanceChange = Utils.calc_Win(goals)
         currBalance += balanceChange
         BalanceLabel.Text = "Balance: " & currBalance
+    End Sub
+
+    Private Sub PlayToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PlayToolStripMenuItem.Click
+
+    End Sub
+
+    Private Sub LeaveToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LeaveToolStripMenuItem.Click
+
+    End Sub
+
+    Private Sub IndexToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles IndexToolStripMenuItem.Click
+
+    End Sub
+
+    Private Sub AboutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AboutToolStripMenuItem.Click
+
+    End Sub
+
+    Private Sub GameToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles GameToolStripMenuItem.Click
+
     End Sub
 End Class
