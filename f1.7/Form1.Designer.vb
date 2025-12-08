@@ -122,14 +122,14 @@ Partial Class Form1
         ' 
         PlayToolStripMenuItem.Name = "PlayToolStripMenuItem"
         PlayToolStripMenuItem.ShortcutKeys = Keys.F2
-        PlayToolStripMenuItem.Size = New Size(180, 22)
+        PlayToolStripMenuItem.Size = New Size(139, 22)
         PlayToolStripMenuItem.Text = "Jogar"
         ' 
         ' LeaveToolStripMenuItem
         ' 
         LeaveToolStripMenuItem.Name = "LeaveToolStripMenuItem"
         LeaveToolStripMenuItem.ShortcutKeys = Keys.Control Or Keys.F4
-        LeaveToolStripMenuItem.Size = New Size(180, 22)
+        LeaveToolStripMenuItem.Size = New Size(139, 22)
         LeaveToolStripMenuItem.Text = "Sair"
         ' 
         ' HelpToolStripMenuItem
@@ -154,7 +154,7 @@ Partial Class Form1
         ' 
         ' Form1
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
+        AutoScaleDimensions = New SizeF(7.0F, 15.0F)
         AutoScaleMode = AutoScaleMode.Font
         BackgroundImage = My.Resources.Resource1.slot_machine
         BackgroundImageLayout = ImageLayout.Center
@@ -168,6 +168,7 @@ Partial Class Form1
         DoubleBuffered = True
         MainMenuStrip = MenuStrip1
         Name = "Form1"
+        StartPosition = FormStartPosition.CenterScreen
         Text = "Slot Machine"
         CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
         CType(PictureBox2, ComponentModel.ISupportInitialize).EndInit()
