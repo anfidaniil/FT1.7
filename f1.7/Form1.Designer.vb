@@ -94,12 +94,12 @@ Partial Class Form1
         ' BalanceLabel
         ' 
         BalanceLabel.BackColor = Color.Transparent
-        BalanceLabel.Font = New Font("Segoe UI", 12.0F)
+        BalanceLabel.Font = New Font("Segoe UI", 12F)
         BalanceLabel.Location = New Point(70, 107)
         BalanceLabel.Name = "BalanceLabel"
         BalanceLabel.Size = New Size(198, 73)
         BalanceLabel.TabIndex = 4
-        BalanceLabel.Text = "Balance: 5000"
+        BalanceLabel.Text = "Créditos: 5000"
         BalanceLabel.TextAlign = ContentAlignment.MiddleCenter
         ' 
         ' MenuStrip1
@@ -115,46 +115,46 @@ Partial Class Form1
         ' 
         GameToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {PlayToolStripMenuItem, LeaveToolStripMenuItem})
         GameToolStripMenuItem.Name = "GameToolStripMenuItem"
-        GameToolStripMenuItem.Size = New Size(50, 20)
-        GameToolStripMenuItem.Text = "Game"
+        GameToolStripMenuItem.Size = New Size(43, 20)
+        GameToolStripMenuItem.Text = "Joga"
         ' 
         ' PlayToolStripMenuItem
         ' 
         PlayToolStripMenuItem.Name = "PlayToolStripMenuItem"
         PlayToolStripMenuItem.ShortcutKeys = Keys.F2
         PlayToolStripMenuItem.Size = New Size(180, 22)
-        PlayToolStripMenuItem.Text = "Play"
+        PlayToolStripMenuItem.Text = "Jogar"
         ' 
         ' LeaveToolStripMenuItem
         ' 
         LeaveToolStripMenuItem.Name = "LeaveToolStripMenuItem"
         LeaveToolStripMenuItem.ShortcutKeys = Keys.Control Or Keys.F4
         LeaveToolStripMenuItem.Size = New Size(180, 22)
-        LeaveToolStripMenuItem.Text = "Leave"
+        LeaveToolStripMenuItem.Text = "Sair"
         ' 
         ' HelpToolStripMenuItem
         ' 
         HelpToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {IndexToolStripMenuItem, AboutToolStripMenuItem})
         HelpToolStripMenuItem.Name = "HelpToolStripMenuItem"
-        HelpToolStripMenuItem.Size = New Size(44, 20)
-        HelpToolStripMenuItem.Text = "Help"
+        HelpToolStripMenuItem.Size = New Size(50, 20)
+        HelpToolStripMenuItem.Text = "Ajuda"
         ' 
         ' IndexToolStripMenuItem
         ' 
         IndexToolStripMenuItem.Name = "IndexToolStripMenuItem"
         IndexToolStripMenuItem.ShortcutKeys = Keys.F1
         IndexToolStripMenuItem.Size = New Size(180, 22)
-        IndexToolStripMenuItem.Text = "Index"
+        IndexToolStripMenuItem.Text = "Indice"
         ' 
         ' AboutToolStripMenuItem
         ' 
         AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
         AboutToolStripMenuItem.Size = New Size(180, 22)
-        AboutToolStripMenuItem.Text = "About"
+        AboutToolStripMenuItem.Text = "Acerca"
         ' 
         ' Form1
         ' 
-        AutoScaleDimensions = New SizeF(7.0F, 15.0F)
+        AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackgroundImage = My.Resources.Resource1.slot_machine
         BackgroundImageLayout = ImageLayout.Center

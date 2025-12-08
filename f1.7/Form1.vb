@@ -111,7 +111,7 @@
     Private Sub OnAnimationEnd()
         Dim balanceChange = Utils.calc_Win(goals)
         currBalance += balanceChange
-        BalanceLabel.Text = "Balance: " & currBalance
+        BalanceLabel.Text = "Créditos: " & currBalance
     End Sub
 
     Private Sub PlayToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PlayToolStripMenuItem.Click
