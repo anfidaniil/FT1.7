@@ -23,14 +23,14 @@
         PictureBox3.Image = Get_Frame(currFrame3)
     End Sub
 
-    Private Sub Form1_Close() Handles Me.Closed
-        'FIX THIS PART- does the oposite
+    Private Sub Form1_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         Dim res = MsgBox("Are you sure?", vbYesNo, "Leave")
-        If res = vbYes Then
-            Me.Close()
 
+        If res = vbNo Then
+            e.Cancel = True
         End If
     End Sub
+
 
     Private Function Get_Frame(currFrame As Integer) As Bitmap
         If (currFrame >= totalFrames) Then
@@ -48,6 +48,10 @@
     End Function
 
     Private Sub Scroll_Frames()
+        goals = Utils.get_RandomNumbers()
+        currFrame1 = goals(0)
+        currFrame2 = goals(1)
+        currFrame3 = goals(2)
         Timer1.Start()
         Timer2.Start()
         Timer3.Start()
@@ -57,10 +61,7 @@
         If currBalance <= 0 Then
             Me.Close()
         End If
-        goals = Utils.get_RandomNumbers()
-        currFrame1 = goals(0)
-        currFrame2 = goals(1)
-        currFrame3 = goals(2)
+
         Scroll_Frames()
     End Sub
 
@@ -114,22 +115,33 @@
     End Sub
 
     Private Sub PlayToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PlayToolStripMenuItem.Click
-
+        PlayButton.PerformClick()
     End Sub
 
     Private Sub LeaveToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LeaveToolStripMenuItem.Click
-
+        Me.Close()
     End Sub
 
     Private Sub IndexToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles IndexToolStripMenuItem.Click
+        Dim msg As String =
+        "Regras do jogo:" & vbCrLf &
+        "- O saldo inicial é 5000 créditos." & vbCrLf &
+        "- Cada jogada faz os números rodarem." & vbCrLf &
+        "- Obter números 7 dá prémios:" & vbCrLf &
+        "    * 1x 7 → +1000 créditos" & vbCrLf &
+        "    * 2x 7 → +2000 créditos" & vbCrLf &
+        "    * 3x 7 → +100000 créditos" & vbCrLf &
+        "- Sem 7 → perde 500 créditos." & vbCrLf &
+        "- Quando o saldo chega a 0, o jogo termina."
 
+        MsgBox(msg, vbInformation, "Índice de Ajuda")
     End Sub
 
     Private Sub AboutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AboutToolStripMenuItem.Click
-
-    End Sub
-
-    Private Sub GameToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles GameToolStripMenuItem.Click
-
+        MsgBox("Slot Machine VB" & vbCrLf &
+           "Versão gráfica" & vbCrLf &
+           "Autor: Daniil Anfinogenov, Shamin Sayed",
+           vbInformation,
+           "Acerca")
     End Sub
 End Class
