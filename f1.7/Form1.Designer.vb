@@ -46,7 +46,7 @@ Partial Class Form1
         ' 
         ' PictureBox1
         ' 
-        PictureBox1.Location = New Point(66, 240)
+        PictureBox1.Location = New Point(220, 240)
         PictureBox1.Name = "PictureBox1"
         PictureBox1.Size = New Size(64, 64)
         PictureBox1.TabIndex = 0
@@ -58,7 +58,7 @@ Partial Class Form1
         ' 
         ' PictureBox2
         ' 
-        PictureBox2.Location = New Point(144, 240)
+        PictureBox2.Location = New Point(295, 240)
         PictureBox2.Name = "PictureBox2"
         PictureBox2.Size = New Size(64, 64)
         PictureBox2.TabIndex = 1
@@ -66,7 +66,7 @@ Partial Class Form1
         ' 
         ' PictureBox3
         ' 
-        PictureBox3.Location = New Point(222, 240)
+        PictureBox3.Location = New Point(373, 240)
         PictureBox3.Name = "PictureBox3"
         PictureBox3.Size = New Size(64, 64)
         PictureBox3.TabIndex = 2
@@ -76,9 +76,9 @@ Partial Class Form1
         ' 
         PlayButton.BackColor = Color.Red
         PlayButton.ForeColor = Color.Transparent
-        PlayButton.Location = New Point(329, 231)
+        PlayButton.Location = New Point(494, 240)
         PlayButton.Name = "PlayButton"
-        PlayButton.Size = New Size(27, 45)
+        PlayButton.Size = New Size(20, 33)
         PlayButton.TabIndex = 3
         PlayButton.TextImageRelation = TextImageRelation.ImageAboveText
         PlayButton.UseVisualStyleBackColor = False
@@ -94,8 +94,8 @@ Partial Class Form1
         ' BalanceLabel
         ' 
         BalanceLabel.BackColor = Color.Transparent
-        BalanceLabel.Font = New Font("Segoe UI", 12F)
-        BalanceLabel.Location = New Point(70, 107)
+        BalanceLabel.Font = New Font("Segoe UI", 12.0F)
+        BalanceLabel.Location = New Point(230, 124)
         BalanceLabel.Name = "BalanceLabel"
         BalanceLabel.Size = New Size(198, 73)
         BalanceLabel.TabIndex = 4
@@ -107,7 +107,7 @@ Partial Class Form1
         MenuStrip1.Items.AddRange(New ToolStripItem() {GameToolStripMenuItem, HelpToolStripMenuItem})
         MenuStrip1.Location = New Point(0, 0)
         MenuStrip1.Name = "MenuStrip1"
-        MenuStrip1.Size = New Size(378, 24)
+        MenuStrip1.Size = New Size(624, 24)
         MenuStrip1.TabIndex = 5
         MenuStrip1.Text = "MenuStrip1"
         ' 
@@ -143,13 +143,13 @@ Partial Class Form1
         ' 
         IndexToolStripMenuItem.Name = "IndexToolStripMenuItem"
         IndexToolStripMenuItem.ShortcutKeys = Keys.F1
-        IndexToolStripMenuItem.Size = New Size(180, 22)
+        IndexToolStripMenuItem.Size = New Size(125, 22)
         IndexToolStripMenuItem.Text = "Indice"
         ' 
         ' AboutToolStripMenuItem
         ' 
         AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
-        AboutToolStripMenuItem.Size = New Size(180, 22)
+        AboutToolStripMenuItem.Size = New Size(125, 22)
         AboutToolStripMenuItem.Text = "Acerca"
         ' 
         ' Form1
@@ -158,7 +158,7 @@ Partial Class Form1
         AutoScaleMode = AutoScaleMode.Font
         BackgroundImage = My.Resources.Resource1.slot_machine
         BackgroundImageLayout = ImageLayout.Center
-        ClientSize = New Size(378, 630)
+        ClientSize = New Size(624, 639)
         Controls.Add(BalanceLabel)
         Controls.Add(PlayButton)
         Controls.Add(PictureBox3)
