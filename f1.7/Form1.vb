@@ -14,10 +14,13 @@
     Dim Timer2_delta = 0
     Dim Timer3_delta = 0
 
+    Dim isAnimationFinished = True
+
     Dim goals = New Integer()
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         spriteSheet = New Bitmap(New Bitmap(My.Resources.Resource1.symbols))
+        BalanceLabel_Update()
         PictureBox1.Image = Get_Frame(currFrame1)
         PictureBox2.Image = Get_Frame(currFrame2)
         PictureBox3.Image = Get_Frame(currFrame3)
@@ -29,6 +32,10 @@
         If res = vbNo Then
             e.Cancel = True
         End If
+    End Sub
+
+    Private Sub BalanceLabel_Update()
+        BalanceLabel.Text = "Créditos: " & currBalance
     End Sub
 
 
@@ -52,17 +59,32 @@
         currFrame1 = goals(0)
         currFrame2 = goals(1)
         currFrame3 = goals(2)
+        isAnimationFinished = False
         Timer1.Start()
         Timer2.Start()
         Timer3.Start()
     End Sub
 
     Private Sub PlayButton_Click(sender As Object, e As EventArgs) Handles PlayButton.Click
-        If currBalance <= 0 Then
-            Me.Close()
-        End If
+        If isAnimationFinished = True Then
+            If currBalance <= 0 Then
+                Dim msg =
+                    "Would you like to receive 10000 balance?" & vbCrLf &
+                    "By continuing you guarantee to award 20 as the final note for our project"
+                Dim res = MsgBox(msg, vbYesNo, "New funds are required")
 
-        Scroll_Frames()
+                If res = vbYes Then
+                    currBalance += 10000
+                    BalanceLabel_Update()
+                Else
+                    Me.Close()
+                End If
+            End If
+
+            If currBalance >= 500 Then
+                Scroll_Frames()
+            End If
+        End If
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
@@ -105,13 +127,14 @@
             Timer3.Stop()
             Timer3_delta = 0
             OnAnimationEnd()
+            isAnimationFinished = True
         End If
     End Sub
 
     Private Sub OnAnimationEnd()
         Dim balanceChange = Utils.calc_Win(goals)
         currBalance += balanceChange
-        BalanceLabel.Text = "Créditos: " & currBalance
+        BalanceLabel_Update()
     End Sub
 
     Private Sub PlayToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PlayToolStripMenuItem.Click
@@ -143,5 +166,13 @@
            "Autor: Daniil Anfinogenov, Shamin Sayed",
            vbInformation,
            "Acerca")
+    End Sub
+
+    Private Sub LeaveButton_Click(sender As Object, e As EventArgs) Handles LeaveButton.Click
+        Me.Close()
+    End Sub
+
+    Private Sub PlayButtonManual_Click(sender As Object, e As EventArgs) Handles PlayButtonManual.Click
+        PlayButton.PerformClick()
     End Sub
 End Class

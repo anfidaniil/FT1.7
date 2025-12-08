@@ -38,6 +38,8 @@ Partial Class Form1
         HelpToolStripMenuItem = New ToolStripMenuItem()
         IndexToolStripMenuItem = New ToolStripMenuItem()
         AboutToolStripMenuItem = New ToolStripMenuItem()
+        LeaveButton = New Button()
+        PlayButtonManual = New Button()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         CType(PictureBox2, ComponentModel.ISupportInitialize).BeginInit()
         CType(PictureBox3, ComponentModel.ISupportInitialize).BeginInit()
@@ -104,18 +106,22 @@ Partial Class Form1
         ' 
         ' MenuStrip1
         ' 
+        MenuStrip1.BackColor = Color.Transparent
+        MenuStrip1.GripMargin = New Padding(2)
         MenuStrip1.Items.AddRange(New ToolStripItem() {GameToolStripMenuItem, HelpToolStripMenuItem})
         MenuStrip1.Location = New Point(0, 0)
         MenuStrip1.Name = "MenuStrip1"
+        MenuStrip1.Padding = New Padding(0, 0, 0, 2)
         MenuStrip1.Size = New Size(624, 24)
         MenuStrip1.TabIndex = 5
         MenuStrip1.Text = "MenuStrip1"
         ' 
         ' GameToolStripMenuItem
         ' 
+        GameToolStripMenuItem.BackColor = SystemColors.ButtonFace
         GameToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {PlayToolStripMenuItem, LeaveToolStripMenuItem})
         GameToolStripMenuItem.Name = "GameToolStripMenuItem"
-        GameToolStripMenuItem.Size = New Size(43, 20)
+        GameToolStripMenuItem.Size = New Size(43, 22)
         GameToolStripMenuItem.Text = "Joga"
         ' 
         ' PlayToolStripMenuItem
@@ -134,9 +140,10 @@ Partial Class Form1
         ' 
         ' HelpToolStripMenuItem
         ' 
+        HelpToolStripMenuItem.BackColor = SystemColors.ButtonFace
         HelpToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {IndexToolStripMenuItem, AboutToolStripMenuItem})
         HelpToolStripMenuItem.Name = "HelpToolStripMenuItem"
-        HelpToolStripMenuItem.Size = New Size(50, 20)
+        HelpToolStripMenuItem.Size = New Size(50, 22)
         HelpToolStripMenuItem.Text = "Ajuda"
         ' 
         ' IndexToolStripMenuItem
@@ -152,6 +159,28 @@ Partial Class Form1
         AboutToolStripMenuItem.Size = New Size(125, 22)
         AboutToolStripMenuItem.Text = "Acerca"
         ' 
+        ' LeaveButton
+        ' 
+        LeaveButton.BackColor = Color.White
+        LeaveButton.Font = New Font("Segoe UI", 12.0F)
+        LeaveButton.Location = New Point(212, 415)
+        LeaveButton.Name = "LeaveButton"
+        LeaveButton.Size = New Size(60, 50)
+        LeaveButton.TabIndex = 6
+        LeaveButton.Text = "Sair"
+        LeaveButton.UseVisualStyleBackColor = False
+        ' 
+        ' PlayButtonManual
+        ' 
+        PlayButtonManual.BackColor = Color.White
+        PlayButtonManual.Font = New Font("Segoe UI", 12.0F)
+        PlayButtonManual.Location = New Point(369, 415)
+        PlayButtonManual.Name = "PlayButtonManual"
+        PlayButtonManual.Size = New Size(60, 50)
+        PlayButtonManual.TabIndex = 7
+        PlayButtonManual.Text = "Jogar"
+        PlayButtonManual.UseVisualStyleBackColor = False
+        ' 
         ' Form1
         ' 
         AutoScaleDimensions = New SizeF(7.0F, 15.0F)
@@ -159,6 +188,8 @@ Partial Class Form1
         BackgroundImage = My.Resources.Resource1.slot_machine
         BackgroundImageLayout = ImageLayout.Center
         ClientSize = New Size(624, 639)
+        Controls.Add(PlayButtonManual)
+        Controls.Add(LeaveButton)
         Controls.Add(BalanceLabel)
         Controls.Add(PlayButton)
         Controls.Add(PictureBox3)
@@ -166,6 +197,7 @@ Partial Class Form1
         Controls.Add(PictureBox1)
         Controls.Add(MenuStrip1)
         DoubleBuffered = True
+        FormBorderStyle = FormBorderStyle.FixedSingle
         MainMenuStrip = MenuStrip1
         Name = "Form1"
         StartPosition = FormStartPosition.CenterScreen
@@ -194,5 +226,7 @@ Partial Class Form1
     Friend WithEvents HelpToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents IndexToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents AboutToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents LeaveButton As Button
+    Friend WithEvents PlayButtonManual As Button
 
 End Class
