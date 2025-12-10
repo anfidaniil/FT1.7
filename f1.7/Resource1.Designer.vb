@@ -65,6 +65,15 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        '''</summary>
+        Friend Shared ReadOnly Property beep_sound() As System.IO.UnmanagedMemoryStream
+            Get
+                Return ResourceManager.GetStream("beep_sound", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
         Friend Shared ReadOnly Property money_piles() As System.Drawing.Bitmap

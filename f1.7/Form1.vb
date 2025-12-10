@@ -1,4 +1,6 @@
-﻿Public Class Form1
+﻿Imports System.Media
+
+Public Class Form1
     Dim spriteSheet As Bitmap
     Dim frameWidth As Integer = 64
     Dim frameHeight As Integer = 64
@@ -70,7 +72,7 @@
             If currBalance <= 0 Then
                 Dim msg =
                     "Would you like to receive 10000 balance?" & vbCrLf &
-                    "By continuing you guarantee to award 20 as the final note for our project"
+                    "By continuing you guarantee to award 100% as the final note for our project"
                 Dim res = MsgBox(msg, vbYesNo, "New funds are required")
 
                 If res = vbYes Then
@@ -133,6 +135,9 @@
 
     Private Sub OnAnimationEnd()
         Dim balanceChange = Utils.calc_Win(goals)
+        If balanceChange = 100000 Then
+            My.Computer.Audio.Play(My.Resources.Resource1.beep_sound, AudioPlayMode.WaitToComplete)
+        End If
         currBalance += balanceChange
         BalanceLabel_Update()
     End Sub
