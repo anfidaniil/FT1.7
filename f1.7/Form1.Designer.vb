@@ -38,19 +38,23 @@ Partial Class Form1
         HelpToolStripMenuItem = New ToolStripMenuItem()
         IndexToolStripMenuItem = New ToolStripMenuItem()
         AboutToolStripMenuItem = New ToolStripMenuItem()
-        LeaveButton = New Button()
-        PlayButtonManual = New Button()
+        LeaveButton = New PictureBox()
+        PlayButtonManual = New PictureBox()
+        PictureBox4 = New PictureBox()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         CType(PictureBox2, ComponentModel.ISupportInitialize).BeginInit()
         CType(PictureBox3, ComponentModel.ISupportInitialize).BeginInit()
         MenuStrip1.SuspendLayout()
+        CType(LeaveButton, ComponentModel.ISupportInitialize).BeginInit()
+        CType(PlayButtonManual, ComponentModel.ISupportInitialize).BeginInit()
+        CType(PictureBox4, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' PictureBox1
         ' 
-        PictureBox1.Location = New Point(220, 240)
+        PictureBox1.Location = New Point(218, 223)
         PictureBox1.Name = "PictureBox1"
-        PictureBox1.Size = New Size(64, 64)
+        PictureBox1.Size = New Size(64, 113)
         PictureBox1.TabIndex = 0
         PictureBox1.TabStop = False
         ' 
@@ -60,17 +64,17 @@ Partial Class Form1
         ' 
         ' PictureBox2
         ' 
-        PictureBox2.Location = New Point(295, 240)
+        PictureBox2.Location = New Point(294, 223)
         PictureBox2.Name = "PictureBox2"
-        PictureBox2.Size = New Size(64, 64)
+        PictureBox2.Size = New Size(64, 113)
         PictureBox2.TabIndex = 1
         PictureBox2.TabStop = False
         ' 
         ' PictureBox3
         ' 
-        PictureBox3.Location = New Point(373, 240)
+        PictureBox3.Location = New Point(372, 223)
         PictureBox3.Name = "PictureBox3"
-        PictureBox3.Size = New Size(64, 64)
+        PictureBox3.Size = New Size(64, 113)
         PictureBox3.TabIndex = 2
         PictureBox3.TabStop = False
         ' 
@@ -78,7 +82,7 @@ Partial Class Form1
         ' 
         PlayButton.BackColor = Color.Red
         PlayButton.ForeColor = Color.Transparent
-        PlayButton.Location = New Point(494, 240)
+        PlayButton.Location = New Point(493, 240)
         PlayButton.Name = "PlayButton"
         PlayButton.Size = New Size(20, 33)
         PlayButton.TabIndex = 3
@@ -96,10 +100,10 @@ Partial Class Form1
         ' BalanceLabel
         ' 
         BalanceLabel.BackColor = Color.Transparent
-        BalanceLabel.Font = New Font("Segoe UI", 12.0F)
-        BalanceLabel.Location = New Point(230, 124)
+        BalanceLabel.Font = New Font("Segoe UI", 12F)
+        BalanceLabel.Location = New Point(209, 115)
         BalanceLabel.Name = "BalanceLabel"
-        BalanceLabel.Size = New Size(198, 73)
+        BalanceLabel.Size = New Size(235, 93)
         BalanceLabel.TabIndex = 4
         BalanceLabel.Text = "Créditos: 5000"
         BalanceLabel.TextAlign = ContentAlignment.MiddleCenter
@@ -161,41 +165,51 @@ Partial Class Form1
         ' 
         ' LeaveButton
         ' 
-        LeaveButton.BackColor = Color.White
-        LeaveButton.Font = New Font("Segoe UI", 12.0F)
-        LeaveButton.Location = New Point(212, 415)
+        LeaveButton.Image = My.Resources.Resource1.button_leave
+        LeaveButton.InitialImage = My.Resources.Resource1.button_leave
+        LeaveButton.Location = New Point(209, 412)
         LeaveButton.Name = "LeaveButton"
-        LeaveButton.Size = New Size(60, 50)
-        LeaveButton.TabIndex = 6
-        LeaveButton.Text = "Sair"
-        LeaveButton.UseVisualStyleBackColor = False
+        LeaveButton.Size = New Size(66, 56)
+        LeaveButton.TabIndex = 8
+        LeaveButton.TabStop = False
         ' 
         ' PlayButtonManual
         ' 
-        PlayButtonManual.BackColor = Color.White
-        PlayButtonManual.Font = New Font("Segoe UI", 12.0F)
-        PlayButtonManual.Location = New Point(369, 415)
+        PlayButtonManual.Image = My.Resources.Resource1.button_play
+        PlayButtonManual.InitialImage = My.Resources.Resource1.button_play
+        PlayButtonManual.Location = New Point(366, 412)
         PlayButtonManual.Name = "PlayButtonManual"
-        PlayButtonManual.Size = New Size(60, 50)
-        PlayButtonManual.TabIndex = 7
-        PlayButtonManual.Text = "Jogar"
-        PlayButtonManual.UseVisualStyleBackColor = False
+        PlayButtonManual.Size = New Size(66, 56)
+        PlayButtonManual.TabIndex = 9
+        PlayButtonManual.TabStop = False
+        ' 
+        ' PictureBox4
+        ' 
+        PictureBox4.BackColor = Color.Transparent
+        PictureBox4.ErrorImage = My.Resources.Resource1.slot_machine_solo
+        PictureBox4.Image = My.Resources.Resource1.slot_machine_solo
+        PictureBox4.Location = New Point(142, 62)
+        PictureBox4.Name = "PictureBox4"
+        PictureBox4.Size = New Size(401, 577)
+        PictureBox4.TabIndex = 11
+        PictureBox4.TabStop = False
         ' 
         ' Form1
         ' 
-        AutoScaleDimensions = New SizeF(7.0F, 15.0F)
+        AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackgroundImage = My.Resources.Resource1.slot_machine
         BackgroundImageLayout = ImageLayout.Center
         ClientSize = New Size(624, 639)
+        Controls.Add(BalanceLabel)
         Controls.Add(PlayButtonManual)
         Controls.Add(LeaveButton)
-        Controls.Add(BalanceLabel)
-        Controls.Add(PlayButton)
-        Controls.Add(PictureBox3)
-        Controls.Add(PictureBox2)
         Controls.Add(PictureBox1)
+        Controls.Add(PictureBox3)
+        Controls.Add(PlayButton)
         Controls.Add(MenuStrip1)
+        Controls.Add(PictureBox2)
+        Controls.Add(PictureBox4)
         DoubleBuffered = True
         FormBorderStyle = FormBorderStyle.FixedSingle
         MainMenuStrip = MenuStrip1
@@ -207,6 +221,9 @@ Partial Class Form1
         CType(PictureBox3, ComponentModel.ISupportInitialize).EndInit()
         MenuStrip1.ResumeLayout(False)
         MenuStrip1.PerformLayout()
+        CType(LeaveButton, ComponentModel.ISupportInitialize).EndInit()
+        CType(PlayButtonManual, ComponentModel.ISupportInitialize).EndInit()
+        CType(PictureBox4, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -226,7 +243,8 @@ Partial Class Form1
     Friend WithEvents HelpToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents IndexToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents AboutToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents LeaveButton As Button
-    Friend WithEvents PlayButtonManual As Button
+    Friend WithEvents LeaveButton As PictureBox
+    Friend WithEvents PlayButtonManual As PictureBox
+    Friend WithEvents PictureBox4 As PictureBox
 
 End Class

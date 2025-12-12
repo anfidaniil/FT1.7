@@ -42,15 +42,34 @@ Public Class Form1
 
 
     Private Function Get_Frame(currFrame As Integer) As Bitmap
-        If (currFrame >= totalFrames) Then
-            currFrame = 0
-        End If
-        Dim srcRect As New Rectangle(currFrame * frameWidth, 0, frameWidth, frameHeight)
+        Dim prevFrame As Integer = (currFrame - 1 + totalFrames) Mod totalFrames
+        Dim nextFrame As Integer = (currFrame + 1) Mod totalFrames
+        currFrame = currFrame Mod totalFrames
+
+        Dim outputWidth As Integer = 64
+        Dim outputHeight As Integer = 113
+
+        Dim spacer = 4
+        Dim prevHeight As Integer = 24 - spacer
+        Dim currHeight As Integer = 64
+        Dim nextHeight As Integer = 113 - 64 - 24 - spacer
+
+
 
         ' Destination image to display
-        Dim frame = New Bitmap(frameWidth, frameHeight)
+        Dim frame = New Bitmap(outputWidth, outputHeight)
         Using g As Graphics = Graphics.FromImage(frame)
-            g.DrawImage(spriteSheet, New Rectangle(0, 0, frameWidth, frameHeight), srcRect, GraphicsUnit.Pixel)
+            Dim srcPrev As New Rectangle(prevFrame * frameWidth, frameHeight - prevHeight, frameWidth, prevHeight)
+            Dim dstPrev As New Rectangle(0, 0, outputWidth, prevHeight)
+            g.DrawImage(spriteSheet, dstPrev, srcPrev, GraphicsUnit.Pixel)
+
+            Dim srcCurr As New Rectangle(currFrame * frameWidth, 0, frameWidth, currHeight)
+            Dim dstCurr As New Rectangle(0, prevHeight + spacer, outputWidth, currHeight)
+            g.DrawImage(spriteSheet, dstCurr, srcCurr, GraphicsUnit.Pixel)
+
+            Dim srcNext As New Rectangle(nextFrame * frameWidth, 0, frameWidth, nextHeight)
+            Dim dstNext As New Rectangle(0, prevHeight + currHeight + spacer * 2, outputWidth, nextHeight)
+            g.DrawImage(spriteSheet, dstNext, srcNext, GraphicsUnit.Pixel)
         End Using
 
         Return frame
