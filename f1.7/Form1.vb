@@ -165,7 +165,8 @@ Public Class Form1
 
         ElseIf balanceChange > 0 Then
             PlayBeeps()
-
+        Else
+            PlayBeepsOnLose()
         End If
 
     End Sub
@@ -174,6 +175,15 @@ Public Class Form1
         Await Task.Run(
             Sub()
                 Using player As New System.Media.SoundPlayer(My.Resources.Resource1.beep_sound)
+                    player.PlaySync()
+                End Using
+            End Sub
+        )
+    End Sub
+    Private Async Sub PlayBeepsOnLose()
+        Await Task.Run(
+            Sub()
+                Using player As New System.Media.SoundPlayer(My.Resources.Resource1.beep_lost)
                     player.PlaySync()
                 End Using
             End Sub
