@@ -41,6 +41,8 @@ Partial Class Form1
         LeaveButton = New PictureBox()
         PlayButtonManual = New PictureBox()
         PictureBox4 = New PictureBox()
+        JackPotCongratsMsg = New PictureBox()
+        Timer4 = New Timer(components)
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         CType(PictureBox2, ComponentModel.ISupportInitialize).BeginInit()
         CType(PictureBox3, ComponentModel.ISupportInitialize).BeginInit()
@@ -48,6 +50,7 @@ Partial Class Form1
         CType(LeaveButton, ComponentModel.ISupportInitialize).BeginInit()
         CType(PlayButtonManual, ComponentModel.ISupportInitialize).BeginInit()
         CType(PictureBox4, ComponentModel.ISupportInitialize).BeginInit()
+        CType(JackPotCongratsMsg, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' PictureBox1
@@ -100,7 +103,7 @@ Partial Class Form1
         ' BalanceLabel
         ' 
         BalanceLabel.BackColor = Color.Transparent
-        BalanceLabel.Font = New Font("Segoe UI", 12F)
+        BalanceLabel.Font = New Font("Segoe UI", 12.0F)
         BalanceLabel.Location = New Point(209, 115)
         BalanceLabel.Name = "BalanceLabel"
         BalanceLabel.Size = New Size(235, 93)
@@ -194,13 +197,28 @@ Partial Class Form1
         PictureBox4.TabIndex = 11
         PictureBox4.TabStop = False
         ' 
+        ' JackPotCongratsMsg
+        ' 
+        JackPotCongratsMsg.BackColor = Color.Transparent
+        JackPotCongratsMsg.Location = New Point(80, 26)
+        JackPotCongratsMsg.Name = "JackPotCongratsMsg"
+        JackPotCongratsMsg.Size = New Size(480, 200)
+        JackPotCongratsMsg.TabIndex = 12
+        JackPotCongratsMsg.TabStop = False
+        JackPotCongratsMsg.Visible = False
+        ' 
+        ' Timer4
+        ' 
+        Timer4.Interval = 200
+        ' 
         ' Form1
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
+        AutoScaleDimensions = New SizeF(7.0F, 15.0F)
         AutoScaleMode = AutoScaleMode.Font
         BackgroundImage = My.Resources.Resource1.slot_machine
         BackgroundImageLayout = ImageLayout.Center
         ClientSize = New Size(624, 639)
+        Controls.Add(JackPotCongratsMsg)
         Controls.Add(BalanceLabel)
         Controls.Add(PlayButtonManual)
         Controls.Add(LeaveButton)
@@ -224,6 +242,7 @@ Partial Class Form1
         CType(LeaveButton, ComponentModel.ISupportInitialize).EndInit()
         CType(PlayButtonManual, ComponentModel.ISupportInitialize).EndInit()
         CType(PictureBox4, ComponentModel.ISupportInitialize).EndInit()
+        CType(JackPotCongratsMsg, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -246,5 +265,7 @@ Partial Class Form1
     Friend WithEvents LeaveButton As PictureBox
     Friend WithEvents PlayButtonManual As PictureBox
     Friend WithEvents PictureBox4 As PictureBox
+    Friend WithEvents JackPotCongratsMsg As PictureBox
+    Friend WithEvents Timer4 As Timer
 
 End Class

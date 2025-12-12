@@ -2,6 +2,7 @@
 
 Public Class Form1
     Dim spriteSheet As Bitmap
+    Dim jackpotSpriteSheet As Bitmap
     Dim frameWidth As Integer = 64
     Dim frameHeight As Integer = 64
     Dim totalFrames = 10
@@ -11,10 +12,12 @@ Public Class Form1
     Dim currFrame1 = 8
     Dim currFrame2 = 8
     Dim currFrame3 = 8
+    Dim jackPotFrame = 0
 
     Dim Timer1_delta = 0
     Dim Timer2_delta = 0
     Dim Timer3_delta = 0
+    Dim Timer4_delta = 0
 
     Dim isAnimationFinished = True
 
@@ -22,6 +25,7 @@ Public Class Form1
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         spriteSheet = New Bitmap(New Bitmap(My.Resources.Resource1.symbols))
+        jackpotSpriteSheet = New Bitmap(New Bitmap(My.Resources.Resource1.jackpot_anim))
         BalanceLabel_Update()
         PictureBox1.Image = Get_Frame(currFrame1)
         PictureBox2.Image = Get_Frame(currFrame2)
@@ -154,13 +158,34 @@ Public Class Form1
 
     Private Sub OnAnimationEnd()
         Dim balanceChange = Utils.calc_Win(goals)
-        If balanceChange = 100000 Then
-            My.Computer.Audio.Play(My.Resources.Resource1.beep_sound, AudioPlayMode.WaitToComplete)
-        End If
         currBalance += balanceChange
         BalanceLabel_Update()
+        If balanceChange = 100000 Then
+            JackPotConratsMsg_Show()
+
+        ElseIf balanceChange > 0 Then
+            PlayBeeps()
+
+        End If
+
     End Sub
 
+    Private Async Sub PlayBeeps()
+        Await Task.Run(
+            Sub()
+                Using player As New System.Media.SoundPlayer(My.Resources.Resource1.beep_sound)
+                    player.PlaySync()
+                End Using
+            End Sub
+        )
+    End Sub
+
+    Private Sub JackPotConratsMsg_Show()
+        JackPotCongratsMsg.Visible = True
+        Timer4.Start()
+        PlayBeeps()
+
+    End Sub
     Private Sub PlayToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PlayToolStripMenuItem.Click
         PlayButton.PerformClick()
     End Sub
@@ -198,5 +223,28 @@ Public Class Form1
 
     Private Sub PlayButtonManual_Click(sender As Object, e As EventArgs) Handles PlayButtonManual.Click
         PlayButton.PerformClick()
+    End Sub
+
+    Private Sub Timer4_Tick(sender As Object, e As EventArgs) Handles Timer4.Tick
+        jackPotFrame = jackPotFrame Mod 2
+        Dim frameWidth = 480
+        Dim frameHeight = 200
+        Dim frame = New Bitmap(480, 200)
+        Using g As Graphics = Graphics.FromImage(frame)
+            Dim srcPrev As New Rectangle(0, frameHeight * jackPotFrame, frameWidth, frameHeight)
+            Dim dstPrev As New Rectangle(0, 0, frameWidth, frameHeight)
+            g.DrawImage(jackpotSpriteSheet, dstPrev, srcPrev, GraphicsUnit.Pixel)
+        End Using
+        JackPotCongratsMsg.Image = frame
+        Timer4_delta += 1
+        jackPotFrame += 1
+
+        If Timer4_delta >= 20 Then
+            JackPotCongratsMsg.Visible = False
+            jackPotFrame = 0
+            Timer4_delta = 0
+            Timer4.Stop()
+        End If
+
     End Sub
 End Class
