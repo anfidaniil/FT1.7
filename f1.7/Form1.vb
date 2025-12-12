@@ -7,7 +7,7 @@ Public Class Form1
     Dim frameHeight As Integer = 64
     Dim totalFrames = 10
 
-    Dim currBalance = 5000
+    Dim currBalance = 500
 
     Dim currFrame1 = 8
     Dim currFrame2 = 8
@@ -18,8 +18,6 @@ Public Class Form1
     Dim Timer2_delta = 0
     Dim Timer3_delta = 0
     Dim Timer4_delta = 0
-
-    Dim isAnimationFinished = True
 
     Dim goals = New Integer()
 
@@ -80,36 +78,38 @@ Public Class Form1
     End Function
 
     Private Sub Scroll_Frames()
+        PlayButton.Enabled = False
         goals = Utils.get_RandomNumbers()
         currFrame1 = goals(0)
         currFrame2 = goals(1)
         currFrame3 = goals(2)
-        isAnimationFinished = False
         Timer1.Start()
         Timer2.Start()
         Timer3.Start()
     End Sub
 
     Private Sub PlayButton_Click(sender As Object, e As EventArgs) Handles PlayButton.Click
-        If isAnimationFinished = True Then
-            If currBalance <= 0 Then
-                Dim msg =
+
+        If currBalance <= 0 Then
+            GameLostMsg.Visible = True
+            Dim msg =
                     "Would you like to receive 10000 balance?" & vbCrLf &
                     "By continuing you guarantee to award 100% as the final note for our project"
-                Dim res = MsgBox(msg, vbYesNo, "New funds are required")
+            Dim res = MsgBox(msg, vbYesNo, "New funds are required")
 
-                If res = vbYes Then
-                    currBalance += 10000
-                    BalanceLabel_Update()
-                Else
-                    Me.Close()
-                End If
-            End If
-
-            If currBalance >= 500 Then
-                Scroll_Frames()
+            If res = vbYes Then
+                GameLostMsg.Visible = False
+                currBalance += 10000
+                BalanceLabel_Update()
+            Else
+                Me.Close()
             End If
         End If
+
+        If currBalance >= 500 Then
+            Scroll_Frames()
+        End If
+
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
@@ -152,7 +152,6 @@ Public Class Form1
             Timer3.Stop()
             Timer3_delta = 0
             OnAnimationEnd()
-            isAnimationFinished = True
         End If
     End Sub
 
@@ -162,13 +161,15 @@ Public Class Form1
         BalanceLabel_Update()
         If balanceChange = 100000 Then
             JackPotConratsMsg_Show()
-
         ElseIf balanceChange > 0 Then
             PlayBeeps()
         Else
             PlayBeepsOnLose()
         End If
-
+        If (currBalance <= 0) Then
+            GameLostMsg.Visible = True
+        End If
+        PlayButton.Enabled = True
     End Sub
 
     Private Async Sub PlayBeeps()

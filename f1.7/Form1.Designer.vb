@@ -43,6 +43,7 @@ Partial Class Form1
         PictureBox4 = New PictureBox()
         JackPotCongratsMsg = New PictureBox()
         Timer4 = New Timer(components)
+        GameLostMsg = New PictureBox()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         CType(PictureBox2, ComponentModel.ISupportInitialize).BeginInit()
         CType(PictureBox3, ComponentModel.ISupportInitialize).BeginInit()
@@ -51,6 +52,7 @@ Partial Class Form1
         CType(PlayButtonManual, ComponentModel.ISupportInitialize).BeginInit()
         CType(PictureBox4, ComponentModel.ISupportInitialize).BeginInit()
         CType(JackPotCongratsMsg, ComponentModel.ISupportInitialize).BeginInit()
+        CType(GameLostMsg, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' PictureBox1
@@ -211,6 +213,17 @@ Partial Class Form1
         ' 
         Timer4.Interval = 200
         ' 
+        ' GameLostMsg
+        ' 
+        GameLostMsg.BackColor = Color.Transparent
+        GameLostMsg.Image = My.Resources.Resource1.gameover
+        GameLostMsg.Location = New Point(80, 145)
+        GameLostMsg.Name = "GameLostMsg"
+        GameLostMsg.Size = New Size(480, 200)
+        GameLostMsg.TabIndex = 13
+        GameLostMsg.TabStop = False
+        GameLostMsg.Visible = False
+        ' 
         ' Form1
         ' 
         AutoScaleDimensions = New SizeF(7.0F, 15.0F)
@@ -218,6 +231,7 @@ Partial Class Form1
         BackgroundImage = My.Resources.Resource1.slot_machine
         BackgroundImageLayout = ImageLayout.Center
         ClientSize = New Size(624, 639)
+        Controls.Add(GameLostMsg)
         Controls.Add(JackPotCongratsMsg)
         Controls.Add(BalanceLabel)
         Controls.Add(PlayButtonManual)
@@ -243,6 +257,7 @@ Partial Class Form1
         CType(PlayButtonManual, ComponentModel.ISupportInitialize).EndInit()
         CType(PictureBox4, ComponentModel.ISupportInitialize).EndInit()
         CType(JackPotCongratsMsg, ComponentModel.ISupportInitialize).EndInit()
+        CType(GameLostMsg, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -267,5 +282,6 @@ Partial Class Form1
     Friend WithEvents PictureBox4 As PictureBox
     Friend WithEvents JackPotCongratsMsg As PictureBox
     Friend WithEvents Timer4 As Timer
+    Friend WithEvents GameLostMsg As PictureBox
 
 End Class
