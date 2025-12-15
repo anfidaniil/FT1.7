@@ -7,7 +7,7 @@ Public Class Form1
     Dim frameHeight As Integer = 64
     Dim totalFrames = 10
 
-    Dim currBalance = 5000
+    Dim currBalance = 500
 
     Dim currFrame1 = 8
     Dim currFrame2 = 8
